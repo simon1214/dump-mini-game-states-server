@@ -1,9 +1,16 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+router.post('/signin', (req, res) => {
+  res.status(200).send('Signin')
+})
+
+router.post('/signup', (req, res) => {
+  res.status(200).send('signup')
+})
+
+router.post('/signout', (req, res) => {
+  res.status(200).send('signout')
+})
 
 module.exports = router;
