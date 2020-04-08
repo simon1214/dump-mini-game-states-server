@@ -1,12 +1,9 @@
 const express = require('express')
 const router = express.Router()
+const scoresController = require('../controllers').scoresController
 
-router.get('/scores', (req, res) => {
-  res.status(200).send('Scores')
-})
+router.get('/scores', scoresController.getScores)
 
-router.get('/leaderboard', (req, res) => {
-  res.status(200).send('Leaderboard')
-})
+router.get('/leaderboard', scoresController.getLeaderboard)
 
 module.exports = router

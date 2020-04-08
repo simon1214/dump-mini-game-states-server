@@ -1,16 +1,9 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const userController = require('../controllers').userController
 
-router.post('/signin', (req, res) => {
-  res.status(200).send('Signin')
-})
-
-router.post('/signup', (req, res) => {
-  res.status(200).send('signup')
-})
-
-router.post('/signout', (req, res) => {
-  res.status(200).send('signout')
-})
+router.post('/signin', userController.signin)
+router.post('/signup', userController.signup)
+router.post('/signout', userController.signout)
 
 module.exports = router;

@@ -1,9 +1,7 @@
 const express = require('express')
 const router = express.Router()
+const articlesController = require('../controllers').articlesController
 
-router.get('/', (req, res) => {
-  res.sendStatus(200)
-})
-
+router.get('/', articlesController.getArticles)
 
 module.exports = router
