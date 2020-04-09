@@ -1,0 +1,6 @@
+{
+  "dialect": "mysql",
+  "host":"minigamestates-deploy.cinuzko6np7w.ap-northeast-2.rds.amazonaws.com",
+  "port":"3341",
+  "database":"MiniGameStates_Deploy"
+}
