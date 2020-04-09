@@ -1,28 +1,34 @@
-const Sequelize = require('sequelize');
+// const Sequelize = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  const users = sequelize.define(
-    'users',
+  const Users = sequelize.define(
+    'Users',
     {
       username: {
-        type:Sequelize.STRING(128),
+        type:DataTypes.STRING,
         allowNull:false
       },
       password: {
-        type:Sequelize.STRING(255),
+        type:DataTypes.STRING,
         allowNull:false
       },
       nickname: {
-        type:Sequelize.STRING(128),
+        type:DataTypes.STRING,
         allowNull:false
       },
       email: {
-        type:Sequelize.STRING(45),
+        type:DataTypes.STRING,
         allowNull:true
+      },
+      created_at : {
+        type:DataTypes.DATETIME
       }
     },
     {}
   );
-  users.associate = function(models) {}
+  Users.associate = (models) => {
+    Users.hasMany(models.Articles)
+    Users.hasMany(models.Scores)
+  }
   return users
 }
