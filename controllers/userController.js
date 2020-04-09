@@ -1,3 +1,4 @@
+require('dotenv').config()
 const jwt = require('jsonwebtoken')
 const accessTokenSecret = process.env.accessTokenSecret || "@development"
 
@@ -19,7 +20,7 @@ const userController = {
           res.sendStatus(401)
         } else {
           const accessToken = jwt.sign({
-            sub:result.dataValues.user_id,
+            sub:result.dataValues.id,
             iat:Date.now()
           }, accessTokenSecret)
 
