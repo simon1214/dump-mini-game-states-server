@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull:false
       },
       created_at: {
-        type:DataTypes.DATETIME,
+        type:DataTypes.DATE,
       }
     },
     {}

@@ -5,11 +5,11 @@ module.exports = (sequelize, DataTypes) => {
     'Scores',
     {
       score: {
-        type:DataTypes.INT,
+        type:DataTypes.INTEGER,
         allowNull:false
       },
       created_at: {
-        type:DataTypes.DATETIME,
+        type:DataTypes.DATE,
       }
     },
     {}
