@@ -4,7 +4,6 @@
     "host": "minigamestates-deploy.cinuzko6np7w.ap-northeast-2.rds.amazonaws.com",
     "port":"3341",
     "dialect": "mysql",
-    "timestamps":false,
     "username":"admin",
     "password":"password123"
   },
@@ -13,7 +12,6 @@
     "host": "minigamestates-deploy.cinuzko6np7w.ap-northeast-2.rds.amazonaws.com",
     "port":"3341",
     "dialect": "mysql",
-    "timestamps":false,
     "username":"admin",
     "password":"password123"
   },
@@ -22,7 +20,6 @@
     "host": "minigamestates-deploy.cinuzko6np7w.ap-northeast-2.rds.amazonaws.com",
     "port":"3341",
     "dialect": "mysql",
-    "timestamps":false,
     "username":"admin",
     "password":"password123"
   }
