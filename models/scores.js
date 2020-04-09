@@ -1,4 +1,4 @@
-// const Sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   const Scores = sequelize.define(
@@ -10,9 +10,12 @@ module.exports = (sequelize, DataTypes) => {
       },
       created_at: {
         type:DataTypes.DATE,
+        defaultValue:Sequelize.NOW
       }
     },
-    {}
+    {
+      timestamps:false
+    }
   );
   Scores.associate = function(models) {}
   return Scores

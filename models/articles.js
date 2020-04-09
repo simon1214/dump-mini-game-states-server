@@ -1,4 +1,4 @@
-// const Sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   const Articles = sequelize.define(
@@ -22,9 +22,12 @@ module.exports = (sequelize, DataTypes) => {
       },
       created_at: {
         type:DataTypes.DATE,
+        defaultValue:Sequelize.NOW
       }
     },
-    {}
+    {
+      timestamps:false
+    }  
   );
   Articles.associate = (models) => {
   }
