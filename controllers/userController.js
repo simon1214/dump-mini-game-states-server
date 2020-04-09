@@ -66,8 +66,8 @@ const userController = {
     })
   },
   signout : (req, res) => {
-    const {token} = req.body
-    refreshTokenList = refreshTokenList.filter(t => t !== token)
+    const {refreshToken} = req.body
+    refreshTokenList = refreshTokenList.filter(token => token !== refreshToken)
     res.status(200).send("Logout successful")
   }
 }
