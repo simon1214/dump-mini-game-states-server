@@ -16,7 +16,7 @@ const articlesController = {
       }).then(() => {
         res.status(201).json({title})
       }).catch(err => {
-        res.sendStatus(403)
+        res.sendStatus(400)
       })
   }
 }
