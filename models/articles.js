@@ -14,15 +14,19 @@ module.exports = (sequelize, DataTypes) => {
       },
       likes: {
         type:DataTypes.STRING,
-        allowNull:false
+        defaultValue:0
       },
       dislikes: {
         type:DataTypes.STRING,
-        allowNull:true
+        defaultValue:0
       },
       created_at: {
         type:DataTypes.DATE,
         defaultValue:Sequelize.NOW
+      },
+      user_id: {
+        type:DataTypes.INTEGER,
+        allowNull:false
       }
     },
     {

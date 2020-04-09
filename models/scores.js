@@ -11,6 +11,14 @@ module.exports = (sequelize, DataTypes) => {
       created_at: {
         type:DataTypes.DATE,
         defaultValue:Sequelize.NOW
+      },
+      user_id: {
+        type:DataTypes.INTEGER,
+        allowNull:false
+      },
+      game_id: {
+        type:DataTypes.INTEGER,
+        allowNull:false
       }
     },
     {
