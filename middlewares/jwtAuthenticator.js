@@ -12,7 +12,9 @@ const jwtAuthenticator = (req, res, next) => {
       next()
     })
   } else {
-    res.sendStatus(403)
+    res.sendStatus(401)
   }
 
 }
+
+module.exports = jwtAuthenticator
