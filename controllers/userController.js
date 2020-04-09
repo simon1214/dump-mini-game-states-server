@@ -1,6 +1,6 @@
 require('dotenv').config()
 const jwt = require('jsonwebtoken')
-const accessTokenSecret = process.env.accessTokenSecret || "@development"
+const {accessTokenSecret, refreshTokenSecret, refreshTokenList, expirationTime} = require('../middlewares/jwtAuthenticator')
 
 const {Users} = require('../models')
 
@@ -19,12 +19,22 @@ const userController = {
         if (result.dataValues.password !== `${password}`) {
           res.sendStatus(401)
         } else {
-          const accessToken = jwt.sign({
-            sub:result.dataValues.id,
-            iat:Date.now()
-          }, accessTokenSecret)
+          const user_id = result.dataValues.id
 
-          res.status(200).json({token:accessToken})
+          const accessToken = jwt.sign({
+            sub:user_id
+          }, accessTokenSecret, {expiresIn:expirationTime})
+
+          const refreshToken = jwt.sign({
+            sub:user_id
+          }, refreshTokenSecret)
+
+          refreshTokenList.push(refreshToken)
+
+          res.status(200).json({
+            accessToken,
+            refreshToken
+          })
         }
 
       }
@@ -56,7 +66,9 @@ const userController = {
     })
   },
   signout : (req, res) => {
-    res.sendStatus(200)
+    const {token} = req.body
+    refreshTokenList = refreshTokenList.filter(t => t !== token)
+    res.status(200).send("Logout successful")
   }
 }
 

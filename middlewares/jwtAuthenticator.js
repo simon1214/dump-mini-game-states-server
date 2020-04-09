@@ -1,6 +1,9 @@
 require('dotenv').config()
 const jwt = require('jsonwebtoken')
-const accessTokenSecret = process.env.accessTokenSecret || "@development"
+const expirationTime = "20m"
+const accessTokenSecret = "@development" || process.env.accessTokenSecret
+const refreshTokenSecret = "@development-refresh" || process.env.refreshTokenSecret
+const refreshTokenList = []
 
 const jwtAuthenticator = (req, res, next) => {
   const authHeader = req.headers.authorization
@@ -14,7 +17,12 @@ const jwtAuthenticator = (req, res, next) => {
   } else {
     res.sendStatus(401)
   }
-
 }
 
-module.exports = jwtAuthenticator
+module.exports = {
+  jwtAuthenticator,
+  accessTokenSecret,
+  refreshTokenSecret,
+  refreshTokenList,
+  expirationTime
+}
