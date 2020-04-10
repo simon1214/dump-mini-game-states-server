@@ -1,10 +1,9 @@
 const express = require('express');
-
+const { scoreController } = require('../controllers');
 const router = express.Router();
-const { scoresController } = require('../controllers');
 
-router.get('/scores', scoresController.getScores);
-
-router.get('/leaderboard', scoresController.getLeaderboard);
+router.get('/scores', scoreController.getUserScores);
+router.post('/scores', scoreController.postUserScores);
+router.get('/leaderboard', scoreController.getLeaderboard);
 
 module.exports = router;
