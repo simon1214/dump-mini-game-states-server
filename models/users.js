@@ -1,4 +1,4 @@
-// const Sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   const Users = sequelize.define(
@@ -21,14 +21,17 @@ module.exports = (sequelize, DataTypes) => {
         allowNull:true
       },
       created_at : {
-        type:DataTypes.DATETIME
+        type:DataTypes.DATE,
+        defaultValue:Sequelize.NOW
       }
     },
-    {}
+    {
+      timestamps:false
+    }
   );
   Users.associate = (models) => {
     Users.hasMany(models.Articles)
     Users.hasMany(models.Scores)
   }
-  return users
+  return Users
 }

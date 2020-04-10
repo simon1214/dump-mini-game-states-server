@@ -1,4 +1,4 @@
-// const Sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   const Games = sequelize.define(
@@ -9,10 +9,13 @@ module.exports = (sequelize, DataTypes) => {
         allowNull:false
       },
       created_at: {
-        type:DataTypes.DATETIME,
+        type:DataTypes.DATE,
+        defaultValue:Sequelize.NOW
       }
     },
-    {}
+    {
+      timestamps:false
+    }
   );
   Games.associate = (models) => {
     Games.hasMany(models.Scores)
