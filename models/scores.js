@@ -5,26 +5,25 @@ module.exports = (sequelize, DataTypes) => {
     'Scores',
     {
       score: {
-        type:DataTypes.INTEGER,
-        allowNull:false
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
       created_at: {
-        type:DataTypes.DATE,
-        defaultValue:Sequelize.NOW
+        type: DataTypes.DATE,
+        defaultValue: Sequelize.NOW,
       },
       user_id: {
-        type:DataTypes.INTEGER,
-        allowNull:false
+        type: DataTypes.INTEGER,
+        allowNull: false,
       },
       game_id: {
-        type:DataTypes.INTEGER,
-        allowNull:false
-      }
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
     {
-      timestamps:false
-    }
+      timestamps: false,
+    },
   );
-  Scores.associate = function(models) {}
-  return Scores
-}
+  return Scores;
+};

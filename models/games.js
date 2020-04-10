@@ -5,20 +5,20 @@ module.exports = (sequelize, DataTypes) => {
     'Games',
     {
       name: {
-        type:DataTypes.STRING,
-        allowNull:false
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       created_at: {
-        type:DataTypes.DATE,
-        defaultValue:Sequelize.NOW
-      }
+        type: DataTypes.DATE,
+        defaultValue: Sequelize.NOW,
+      },
     },
     {
-      timestamps:false
-    }
+      timestamps: false,
+    },
   );
   Games.associate = (models) => {
-    Games.hasMany(models.Scores)
-  }
-  return Games
-}
+    Games.hasMany(models.Scores);
+  };
+  return Games;
+};

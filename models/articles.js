@@ -5,35 +5,33 @@ module.exports = (sequelize, DataTypes) => {
     'Articles',
     {
       title: {
-        type:DataTypes.STRING,
-        allowNull:false
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       contents: {
-        type:DataTypes.STRING,
-        allowNull:false
+        type: DataTypes.STRING,
+        allowNull: false,
       },
       likes: {
-        type:DataTypes.STRING,
-        defaultValue:0
+        type: DataTypes.STRING,
+        defaultValue: 0,
       },
       dislikes: {
-        type:DataTypes.STRING,
-        defaultValue:0
+        type: DataTypes.STRING,
+        defaultValue: 0,
       },
       created_at: {
-        type:DataTypes.DATE,
-        defaultValue:Sequelize.NOW
+        type: DataTypes.DATE,
+        defaultValue: Sequelize.NOW,
       },
       user_id: {
-        type:DataTypes.INTEGER,
-        allowNull:false
-      }
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
     },
     {
-      timestamps:false
-    }  
+      timestamps: false,
+    },
   );
-  Articles.associate = (models) => {
-  }
-  return Articles
-}
+  return Articles;
+};
