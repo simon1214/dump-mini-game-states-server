@@ -23,15 +23,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// {
-//   "origin": "*",
-//   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-//   "preflightContinue": false,
-//   "optionsSuccessStatus": 204
-// }
+const corsOptions = {
+  "origin": false,
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": true,
+  "optionsSuccessStatus": 204
+}
 
-app.options('/', cors())
-app.use(cors())
+app.options('*', cors(corsOptions))
+app.use(cors(corsOptions))
 
 app.use('/', indexRouter);
 app.use('/users', userRouter);
