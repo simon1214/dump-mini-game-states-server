@@ -24,9 +24,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 const corsOptions = {
-  "origin": false,
+  "origin": /.*/,
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-  "preflightContinue": true,
+  "preflightContinue": false,
   "optionsSuccessStatus": 204
 }
 
