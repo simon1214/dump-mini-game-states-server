@@ -23,8 +23,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use(cors())
-
 
 const corsOptions = {
   "origin": "*",
@@ -34,8 +32,9 @@ const corsOptions = {
   "credentials":true
 }
 
+app.use(cors())
 // app.options('*', cors(corsOptions))
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
 
 app.use('/', indexRouter);
 app.use('/users', userRouter);
