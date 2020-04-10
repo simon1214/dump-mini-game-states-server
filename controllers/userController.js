@@ -44,7 +44,7 @@ const userController = {
     
   },
   signup : (req, res) => {
-    const {username, password, nickname, email} = req.body
+    const {username, password, nickname, email} = req.body.user
 
     Users.findOrCreate({
       where: {
