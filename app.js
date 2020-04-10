@@ -23,14 +23,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// app.use(cors())
+
+
 const corsOptions = {
-  "origin": /.*/,
+  "origin": "*",
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
   "preflightContinue": false,
-  "optionsSuccessStatus": 204
+  "optionsSuccessStatus": 204,
+  "credentials":true
 }
 
-app.options('*', cors(corsOptions))
+// app.options('*', cors(corsOptions))
 app.use(cors(corsOptions))
 
 app.use('/', indexRouter);
