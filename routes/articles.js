@@ -1,10 +1,11 @@
-const express = require('express')
-const router = express.Router()
-const articlesController = require('../controllers').articlesController
+const express = require('express');
 
-const {jwtAuthenticator} = require('../middlewares/jwtAuthenticator')
+const router = express.Router();
+const { articlesController } = require('../controllers');
 
-router.get('/', articlesController.getArticles)
-router.post('/', jwtAuthenticator, articlesController.postArticle)
+const { jwtAuthenticator } = require('../middlewares/jwtAuthenticator');
 
-module.exports = router
+router.get('/', articlesController.getArticles);
+router.post('/', jwtAuthenticator, articlesController.postArticle);
+
+module.exports = router;

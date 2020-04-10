@@ -1,9 +1,10 @@
-const express = require('express')
-const router = express.Router()
-const scoresController = require('../controllers').scoresController
+const express = require('express');
 
-router.get('/scores', scoresController.getScores)
+const router = express.Router();
+const { scoresController } = require('../controllers');
 
-router.get('/leaderboard', scoresController.getLeaderboard)
+router.get('/scores', scoresController.getScores);
 
-module.exports = router
+router.get('/leaderboard', scoresController.getLeaderboard);
+
+module.exports = router;

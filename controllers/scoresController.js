@@ -1,10 +1,10 @@
 const scoresController = {
-  getScores : (req, res) => {
-    res.sendStatus(200)
+  getScores: (req, res) => {
+    res.sendStatus(200);
   },
-  getLeaderboard : (req, res) => {
-    res.sendStatus(200)
-  }
-}
+  getLeaderboard: (req, res) => {
+    res.sendStatus(200);
+  },
+};
 
-module.exports = scoresController
+module.exports = scoresController;
