@@ -22,15 +22,16 @@ if (config.use_env_variable) {
 } else {
   sequelize = new Sequelize(
     config.database,
-    config.username,
-    config.password,
+    process.env.DB_USERNAME,
+    process.env.DB_PASSWORD,
     config,
   );
 }
 
 fs.readdirSync(__dirname)
   .filter(
-    (file) => file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js',
+    (file) =>
+      file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js',
   )
   .forEach((file) => {
     const model = sequelize.import(path.join(__dirname, file));
