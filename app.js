@@ -24,17 +24,21 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-const corsOptions = {
-  "origin": "*",
-  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-  "preflightContinue": false,
-  "optionsSuccessStatus": 204,
-  "credentials":true
-}
+const whitelist = ['http://localhost:3000']
 
-app.use(cors())
-// app.options('*', cors(corsOptions))
-// app.use(cors(corsOptions))
+app.use(cors({
+  origin: function(origin, callback){
+    // allow requests with no origin
+    if(!origin) return callback(null, true);
+    if(whitelist.indexOf(origin) === -1){
+      var message = "The CORS policy for this origin doesn't " +
+               "allow access from the particular origin.";
+      return callback(new Error(message), false);
+    }
+    return callback(null, true);
+  },
+  credentials:true
+}));
 
 app.use('/', indexRouter);
 app.use('/users', userRouter);
