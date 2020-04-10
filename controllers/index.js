@@ -1,7 +1,7 @@
 /* eslint-ignore-next-line */
 module.exports = {
-  userControllers: require('./userControllers'),
+  userControllers: require('./userController'),
   articlesController: require('./articlesController'),
-  scoresController: require('./scoresController'),
+  scoreController: require('./scoreController'),
   tokenController: require('./tokenController'),
 };
