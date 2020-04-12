@@ -3,7 +3,9 @@
     "database": "database_development",
     "host": "minigamestates-deploy.cinuzko6np7w.ap-northeast-2.rds.amazonaws.com",
     "port": "3341",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "username": "admin",
+    "password": "password123"
   },
   "production": {
     "database": "MiniGameStates_Deploy",
