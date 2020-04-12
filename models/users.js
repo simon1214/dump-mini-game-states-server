@@ -30,8 +30,8 @@ module.exports = (sequelize, DataTypes) => {
     },
   );
   Users.associate = (models) => {
-    Users.hasMany(models.Articles);
-    Users.hasMany(models.Scores);
+    // Users.hasMany(models.Articles);
+    // Users.hasMany(models.Scores);
   };
   return Users;
 };

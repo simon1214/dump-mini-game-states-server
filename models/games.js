@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   );
   Games.associate = (models) => {
-    Games.hasMany(models.Scores);
+    // Games.hasMany(models.Scores);
   };
   return Games;
 };
