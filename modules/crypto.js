@@ -3,7 +3,7 @@ const crypto = require('crypto');
 const encrypt = (plaintText) => {
   const encryptedPW = crypto
     .createHash('sha1')
-    .update(plaintText)
+    .update(`${plaintText}`)
     .digest('hex');
 
   return encryptedPW;
