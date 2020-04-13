@@ -7,20 +7,10 @@
     "username": "admin",
     "password": "password123"
   },
-  "test": {
-    "database": "MiniGameStates_Deploy",
-    "host": "minigamestates-deploy.cinuzko6np7w.ap-northeast-2.rds.amazonaws.com",
-    "port": "3341",
-    "dialect": "mysql",
-    "username": "admin",
-    "password": "password123"
-  },
   "production": {
     "database": "MiniGameStates_Deploy",
     "host": "minigamestates-deploy.cinuzko6np7w.ap-northeast-2.rds.amazonaws.com",
     "port": "3341",
-    "dialect": "mysql",
-    "username": "admin",
-    "password": "password123"
+    "dialect": "mysql"
   }
 }
