@@ -25,5 +25,9 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: false,
     },
   );
+  Scores.associate = (model) => {
+    Scores.belongsTo(model.Games, { foreignKey: 'game_id', as: 'Games' });
+    Scores.belongsTo(model.Users, { foreignKey: 'user_id', as: 'Users' });
+  };
   return Scores;
 };

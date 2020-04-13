@@ -38,7 +38,8 @@ module.exports = (sequelize, DataTypes) => {
   );
   // eslint-disable-next-line
   Users.associate = (models) => {
-    Users.hasMany(models.Articles, { foreignKey: 'user_id', as: 'Users' });
+    Users.hasMany(models.Articles, { foreignKey: 'user_id' });
+    Users.hasMany(models.Scores, { foreignKey: 'user_id' });
   };
   return Users;
 };
