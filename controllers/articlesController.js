@@ -1,7 +1,29 @@
-const { Articles } = require('../models');
+const { Articles, Users } = require('../models');
 
 const articlesController = {
   getArticles: (req, res) => {
+    Articles.findAll()
+      .then((rawResult) => {
+        return rawResult.map((rawData) => rawData.dataValues);
+      })
+      .then((untrimmedResult) => {
+        return untrimmedResult.map(async (article) => {
+          const nickname = await Users.findByPk(article.user_id).then(
+            (result) => {
+              console.log(result.nickname);
+              return result.nickname;
+            },
+          );
+          console.log('nickname : ', nickname);
+          return {
+            ...article,
+            [nickname]: nickname,
+          };
+        });
+      })
+      .then((result) => {
+        console.log(result);
+      });
     res.sendStatus(200);
   },
   postArticle: (req, res) => {
