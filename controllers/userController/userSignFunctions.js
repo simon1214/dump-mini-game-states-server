@@ -27,6 +27,7 @@ const userSignFunctions = {
       } else {
         const user_id = result.dataValues.id;
 
+        // JWT 토큰을 두 개 생성 후 반환
         const accessToken = jwt.sign(
           {
             sub: user_id,
@@ -47,14 +48,13 @@ const userSignFunctions = {
         res.status(200).json({
           accessToken,
           refreshToken,
+          user: { nickname: result.dataValues.nickname },
         });
       }
     });
   },
   signup: (req, res) => {
-    const {
-      username, password, nickname, email,
-    } = req.body.user;
+    const { username, password, nickname, email } = req.body.user;
 
     Users.findOrCreate({
       where: {
