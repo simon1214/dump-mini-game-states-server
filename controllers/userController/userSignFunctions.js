@@ -1,5 +1,7 @@
 require('dotenv').config();
 const jwt = require('jsonwebtoken');
+const encrypt = require('../../modules/crypto');
+
 const {
   accessTokenSecret,
   refreshTokenSecret,
@@ -10,7 +12,8 @@ const { Users } = require('../../models');
 
 const userSignFunctions = {
   signin: (req, res) => {
-    const { username, password } = req.body;
+    const { username, password } = req.body.user;
+    const encryptedPW = encrypt(password);
 
     Users.findOne({
       where: {
@@ -19,7 +22,7 @@ const userSignFunctions = {
     }).then((result) => {
       if (!result) {
         res.sendStatus(404);
-      } else if (result.dataValues.password !== `${password}`) {
+      } else if (result.dataValues.password !== encryptedPW) {
         res.sendStatus(401);
       } else {
         const user_id = result.dataValues.id;
@@ -49,9 +52,7 @@ const userSignFunctions = {
     });
   },
   signup: (req, res) => {
-    const {
-      username, password, nickname, email,
-    } = req.body.user;
+    const { username, password, nickname, email } = req.body.user;
 
     Users.findOrCreate({
       where: {
