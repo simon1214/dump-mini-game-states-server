@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const encrypt = require('../modules/crypto');
 
 module.exports = (sequelize, DataTypes) => {
   const Users = sequelize.define(
@@ -27,6 +28,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       timestamps: false,
+      hooks: {
+        afterValidate: (user, options) => {
+          user.password = encrypt(user.password);
+        },
+      },
     },
   );
   Users.associate = (models) => {
