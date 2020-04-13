@@ -29,15 +29,14 @@ module.exports = (sequelize, DataTypes) => {
     {
       timestamps: false,
       hooks: {
-        afterValidate: (user, options) => {
+        afterValidate: (user) => {
+          // eslint-disable-next-line
           user.password = encrypt(user.password);
         },
       },
     },
   );
-  Users.associate = (models) => {
-    // Users.hasMany(models.Articles);
-    // Users.hasMany(models.Scores);
-  };
+  // eslint-disable-next-line
+  Users.associate = () => {};
   return Users;
 };

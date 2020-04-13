@@ -32,9 +32,8 @@ app.use(
       // allow requests with no origin
       if (!origin) return callback(null, true);
       if (whitelist.indexOf(origin) === -1) {
-        const message =
-          "The CORS policy for this origin doesn't " +
-          'allow access from the particular origin.';
+        const message = "The CORS policy for this origin doesn't "
+          + 'allow access from the particular origin.';
         return callback(new Error(message), false);
       }
       return callback(null, true);
