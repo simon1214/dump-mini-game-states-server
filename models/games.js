@@ -17,6 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       timestamps: false,
     },
   );
+  // eslint-disable-next-line
   Games.associate = (models) => {
     // Games.hasMany(models.Scores);
   };
