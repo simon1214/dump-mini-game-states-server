@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   // eslint-disable-next-line
   Games.associate = (models) => {
-    // Games.hasMany(models.Scores);
+    Games.hasMany(models.Scores, { foreignKey: 'game_id', as: 'Games' });
   };
   return Games;
 };
