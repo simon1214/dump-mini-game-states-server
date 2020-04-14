@@ -20,9 +20,10 @@ const getLeaderboard = (req, res) => {
         },
       ],
     })
-      .then((rawResult) => {
+      .then((result) => {
         // Filtering keys to return
-        const filteredResult = rawResult.map((rawData, index) => {
+        const filteredResult = result.map((rawData, index) => {
+          // eslint-disable-next-line
           const { score, Users } = rawData.dataValues;
           const { nickname } = Users.dataValues;
           return {

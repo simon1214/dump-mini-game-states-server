@@ -55,7 +55,9 @@ const userSignFunctions = {
     });
   },
   signup: (req, res) => {
-    const { username, password, nickname, email } = req.body.user;
+    const {
+      username, password, nickname, email,
+    } = req.body.user;
 
     Users.findOrCreate({
       where: {

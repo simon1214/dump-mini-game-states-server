@@ -8,6 +8,7 @@ const deleteArticle = (req, res) => {
       res.status(200).send('Success');
     })
     .catch((err) => {
+      // eslint-disable-next-line
       console.log(err);
       res.sendStatus(404);
     });
