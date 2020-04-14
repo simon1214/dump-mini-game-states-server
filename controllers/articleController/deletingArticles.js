@@ -1,7 +1,7 @@
 const { Articles } = require('../../models');
 
 const deleteArticle = (req, res) => {
-  const { article_id } = req.body;
+  const article_id = req.params.articleID;
 
   Articles.destroy({ where: { id: article_id } })
     .then(() => {

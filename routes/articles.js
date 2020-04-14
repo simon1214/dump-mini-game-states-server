@@ -7,7 +7,7 @@ const { jwtAuthenticator } = require('../middlewares/jwtAuthenticator');
 
 router.get('/', articleController.getArticles);
 router.post('/', jwtAuthenticator, articleController.postArticle);
-router.post('/delete', articleController.deleteArticle);
-router.post('/update', articleController.updateArticle);
+router.delete('/:articleID', articleController.deleteArticle);
+router.put('/:articleID', articleController.updateArticle);
 
 module.exports = router;
