@@ -26,6 +26,7 @@ const getUserScores = (req, res) => {
 
       // Clean the raw results to only include score and game title
       const rawScores = rawResult.map((rawData) => {
+        // eslint-disable-next-line
         const { score, Games } = rawData.dataValues;
         return { score, gameTitle: Games.dataValues.name };
       });
@@ -39,19 +40,22 @@ const getUserScores = (req, res) => {
       });
 
       const arrayToReturn = [];
-      for (let gameTitle of gameTitles) {
-        const filteredGameScores = rawScores.filter((rawData) => {
-          return rawData.gameTitle === gameTitle;
-        });
-        const saveOnlyGameScores = filteredGameScores.reduce((acc, curr) => {
-          return [...acc, curr.score];
-        }, []);
+      // eslint-disable-next-line
+      for (const gameTitle of gameTitles) {
+        const filteredGameScores = rawScores.filter(
+          (raw) => raw.gameTitle === gameTitle,
+        );
+        const saveOnlyGameScores = filteredGameScores.reduce(
+          (acc, curr) => [...acc, curr.score],
+          [],
+        );
         arrayToReturn.push({ gameTitle, scores: saveOnlyGameScores });
       }
 
       return res.status(200).json({ nickname, games: arrayToReturn });
     })
     .catch((err) => {
+      // eslint-disable-next-line
       console.log(err);
       res.status(400).send("Couldn't search for the scores");
     });

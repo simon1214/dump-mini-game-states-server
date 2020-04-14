@@ -12,35 +12,33 @@ const basicArticleFunctions = {
         },
       ],
     })
-      .then((rawResult) => {
-        return rawResult.map((rawData) => {
-          // Get properties of articles except user_id
-          const {
-            id,
-            title,
-            contents,
-            likes,
-            dislikes,
-            created_at,
-          } = rawData.dataValues;
+      .then((rawResult) => rawResult.map((rawData) => {
+        // Get properties of articles except user_id
+        const {
+          id,
+          title,
+          contents,
+          likes,
+          dislikes,
+          created_at,
+        } = rawData.dataValues;
 
-          // Get the nickname of the article owner
-          const { nickname } = rawData.dataValues.Users.dataValues;
+        // Get the nickname of the article owner
+        const { nickname } = rawData.dataValues.Users.dataValues;
 
-          // Create a clean object with desired values
-          const cleanedObj = {
-            id,
-            nickname,
-            title,
-            contents,
-            likes,
-            dislikes,
-            created_at,
-          };
+        // Create a clean object with desired values
+        const cleanedObj = {
+          id,
+          nickname,
+          title,
+          contents,
+          likes,
+          dislikes,
+          created_at,
+        };
 
-          return cleanedObj;
-        });
-      })
+        return cleanedObj;
+      }))
       .then((result) => {
         res.status(200).json(result);
       });
