@@ -41,6 +41,7 @@ const userSignFunctions = {
             sub: user_id,
           },
           refreshTokenSecret,
+          { expiresIn: '1d' },
         );
 
         refreshTokenList.push(refreshToken);
