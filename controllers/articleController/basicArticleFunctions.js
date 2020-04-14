@@ -1,6 +1,6 @@
-const { Articles, Users } = require('../models');
+const { Articles, Users } = require('../../models');
 
-const articlesController = {
+const basicArticleFunctions = {
   getArticles: (req, res) => {
     Articles.findAll({
       include: [
@@ -63,4 +63,4 @@ const articlesController = {
   },
 };
 
-module.exports = articlesController;
+module.exports = basicArticleFunctions;
