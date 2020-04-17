@@ -1,13 +1,26 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+require('dotenv').config();
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require('cors');
 
-var app = express();
+const indexRouter = require('./routes/index');
+const userRouter = require('./routes/users');
+const articlesRouter = require('./routes/articles');
+const scoresRouter = require('./routes/scores');
+
+const app = express();
+
+// Logging http requests
+app.use((req, res, next) => {
+  console.log('=================================================');
+  console.log('Current Request Method', req.method);
+  if (req.body) console.log('Request Body', req.body);
+  next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -19,16 +32,37 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const whitelist = ['http://127.0.0.1:3000', 'http://localhost:3000'];
+
+app.use(
+  cors({
+    origin(origin, callback) {
+      // allow requests with no origin
+      if (!origin) return callback(null, true);
+      if (whitelist.indexOf(origin) === -1) {
+        const message =
+          "The CORS policy for this origin doesn't " +
+          'allow access from the particular origin.';
+        return callback(new Error(message), false);
+      }
+      return callback(null, true);
+    },
+    credentials: true,
+  }),
+);
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/users', userRouter);
+app.use('/articles', articlesRouter);
+app.use('/scores', scoresRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err, req, res) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
