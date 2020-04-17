@@ -35,7 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const whitelist = [
   'http://127.0.0.1:3000',
   'http://localhost:3000',
-  'http://13.209.41.64:3000',
+  'http://mini-game-states-client.s3-website.ap-northeast-2.amazonaws.com',
 ];
 
 app.use(
