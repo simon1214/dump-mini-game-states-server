@@ -32,7 +32,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const whitelist = ['http://127.0.0.1:3000', 'http://localhost:3000'];
+const whitelist = [
+  'http://127.0.0.1:3000',
+  'http://localhost:3000',
+  'http://13.209.41.64:3000',
+];
 
 app.use(
   cors({
