@@ -36,6 +36,7 @@ const whitelist = [
   'http://127.0.0.1:3000',
   'http://localhost:3000',
   'http://mini-game-states-client.s3-website.ap-northeast-2.amazonaws.com',
+  'http://14.41.86.57:4010',
 ];
 
 app.use(
